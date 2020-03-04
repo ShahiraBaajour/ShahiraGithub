@@ -9,14 +9,16 @@
 %Date Last modified: March 3,2020
 %Contact: baajour35@gmail.com
 %--------------------------------------------------------------------------
-%specify data files
-subname = ['region1_ts';'region2_ts';'region3_ts';'region4_ts';
-        'region5_ts';'region6_ts';
-        'region7_ts';'region8_ts';'region9_ts';'region10_ts';'region11_ts';
-        'region12_ts';'region13_ts';'region14_ts']; 
-nsubs=size(subname,1);%# of Subjects n
-nreg=11;% # of regions involved
-ncond=2;% 2 Conditions, Cooling &  warming
+%open data files
+folderlist=dir();
+for i=4:length(folderlist)
+        cd (folderlist.name(i),C)%load timeseries data
+        data_ts(i,:)=C;%assemble timeseries data [nsubs x nregs]
+end
+
+nsubs=size(data_ts,1);%# of Subjects n
+nreg=size(data_ts,2);% # of regions involved
+ncond=2;% 2 Conditions, e.g. Cooling, Warming
 nsets=4;
 nmod = zeros(1,nsets);
 
@@ -57,10 +59,7 @@ for imageset=1:nsets
     % loop over subjects
         % get data file name for each subject
         for sub=1:nsubs
-            STR = ['/Users/dicom/Desktop/data/',subname(sub,:),'.mat']; %load each timeseries data file
-            infile = load(STR);
-        
-            Z = infile.C;
+            Z = data_ts(sub,:);
         
             for reg=1:nreg
             % left
