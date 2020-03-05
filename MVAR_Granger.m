@@ -1,4 +1,4 @@
-%Code by SHAHIRA BAAJOUR- Brain Imaging Reseach Division @ Wayne State Univerity
+%Code by SHAHIRA BAAJOUR- Brain Imaging Research Division @ Wayne State Univerity
 %--------------------------------------------------------------------------
 %This code uses input fMRI timeseries data, # of subjects,
 %models, conditions, onset times to generate multivariate autoregressive analysis
