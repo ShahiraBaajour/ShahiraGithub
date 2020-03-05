@@ -74,14 +74,14 @@ for imageset=1:nsets
             end
         end 
 end
-s=cell(nsubs,ncond);%define matrix to combine all results
+s=cell(nsubs,ncond);%define cell s to combine all results
 for i=1:nsubs
     for j=1:ncond
         s{i,j}=zeros(nreg,nreg,1);
     end 
 end
 for sub=1:nsubs
-        %organize the combination of results in s
+        %organize the combination of results in cell s
         s{sub,1}=mean(coeff{sub,1}(:,:,1:2),3);%sets 1:2= Cooling Condition
         s{sub,2}=mean(coeff{sub,1}(:,:,3:4),3);%sets 3:4 = Warming Condition
         
@@ -107,7 +107,7 @@ for sub=1:nsubs
     end 
 end 
 for n=1:2
-    average{1,n}=average{1,n}./nsubs;%Final MVSR coeff matrix for both conditions
+    average{1,n}=average{1,n}./nsubs;%Final MVAR coeff matrix for both conditions
 end 
 
 
